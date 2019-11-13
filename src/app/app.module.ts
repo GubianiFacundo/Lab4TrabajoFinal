@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { IncidenciasComponent } from './components/incidencias/incidencias.component';
-import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 
 @NgModule({
@@ -18,7 +18,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
     AppComponent,
     LoginComponent,
     IncidenciasComponent,
-    NavBarComponent
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
