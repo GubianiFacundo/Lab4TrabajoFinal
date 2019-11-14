@@ -11,6 +11,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
 import { IncidenciasComponent } from './components/incidencias/incidencias.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { IncidenciaComponent } from './components/incidencia/incidencia.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     AppComponent,
     LoginComponent,
     IncidenciasComponent,
-    NavbarComponent
+    NavbarComponent,
+    IncidenciaComponent
   ],
   imports: [
     BrowserModule,
