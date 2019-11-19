@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 import { IncidenciasComponent } from './components/incidencias/incidencias.component';
 // import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { IncidenciaComponent } from './components/incidencia/incidencia.component';
@@ -9,6 +10,7 @@ import { IncidenciaComponent } from './components/incidencia/incidencia.componen
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
   { path: 'incidencias', component: IncidenciasComponent },
   // { path: 'navBar', component: NavBarComponent }
   { path: 'incidencia', component: IncidenciaComponent },
