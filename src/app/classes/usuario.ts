@@ -4,6 +4,6 @@ export class Usuario {
     rol: String;
 
     constructor() {
-        this.rol = 'N';
+        this.rol = 'NON';
     }
 }

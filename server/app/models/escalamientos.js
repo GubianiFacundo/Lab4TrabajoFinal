@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
-    idIncidencia: {
+    id_incidencia: {
       type: DataTypes.STRING,
       allowNull: false,
       references: {
@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
         key: 'id'
       }
     },
-    aQuien: {
+    a_quien: {
       type: DataTypes.STRING,
       allowNull: false
     },
@@ -29,6 +29,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     }
   }, {
-    tableName: 'escalamientos'
+    tableName: 'escalamientos',
+    timestamps: false
   });
 };

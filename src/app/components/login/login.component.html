@@ -13,21 +13,18 @@
     </div>
     <div class="form-group col-md-4 center">
       <label>Clave</label>
-      <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="usuario.clave"
-        placeholder="Ingrese su clave" #clave="ngModel">
-      <div [hidden]="clave.valid || clave.pristine" class="alert alert-danger">
+      <input type="password" class="form-control" id="password" name="password" required [(ngModel)]="usuario.pass"
+        placeholder="Ingrese su clave" #pass="ngModel">
+      <div [hidden]="pass.valid || pass.pristine" class="alert alert-danger">
         La clave es obligatoria
       </div>
       <br>
       <button type="submit" (click)="ingresar()" class="btn btn-success"
         [disabled]="!userForm.form.valid">Ingresar</button> &nbsp;
-      <button type="submit" routerLink="/register" class="btn btn-primary float-right">Registrar</button>
+      <button type="submit" routerLink="/register" class="btn btn-primary float-right">Regístrate</button>
     </div>
   </form>
   <div *ngIf="error" class="alert alert-danger" role="alert">
-    Usuario o clave incorrectos. Por favor, verifique y reintente
-  </div>
-  <div class="alert alert-info" role="alert">
-    <small>admin/admin rol superusuario | compra/compra rol Sector Compras | vende/vende rol Sector Ventas</small>
+    Usuario o password incorrecto !!!
   </div>
 </div>

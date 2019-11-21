@@ -27,8 +27,13 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       defaultValue: 'GENERADA'
+    },
+    id_user: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     }
   }, {
-    tableName: 'incidencias'
+    tableName: 'incidencias',
+    timestamps: false
   });
 };

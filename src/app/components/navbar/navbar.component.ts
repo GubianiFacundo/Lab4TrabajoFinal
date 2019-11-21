@@ -10,22 +10,23 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit, OnDestroy {
-
   usuario: Usuario;
-  este = new Subscription();
+  imUser = new Subscription();
+  logged = sessionStorage.getItem('isLogged')
 
   constructor(
-    // public authSrv: AuthService,
+    public authSrv: AuthService,
     private router: Router
     ) {
-      // Nos suscribimos al authorization service para ver quien esta logueado... quien es este?
-      // this.este = this.authSrv.quien.subscribe((user: Usuario) => this.usuario = user);
+      // Nos suscribimos al authorization service y entonces vemos quién está todo logueado...
+      this.imUser = this.authSrv.quien.subscribe((user: Usuario) => this.usuario = user);
 
   }
 
   ngOnInit() {
-    // si desaparece la nav-bar porque me apreta F5 va al login
-    if (this.usuario.rol === 'N') {
+    console.log(this.usuario)
+    // F5 y te me vas pal login
+    if (this.usuario.rol === 'NON') {
       this.router.navigate(['/']);
     }
   }
@@ -37,7 +38,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.este.unsubscribe;
+    this.imUser.unsubscribe;
   }
 
 }

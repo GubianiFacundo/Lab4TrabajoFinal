@@ -16,15 +16,20 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    fechaIni: {
+    fecha_ini: {
       type: DataTypes.DATEONLY,
       allowNull: false
     },
-    fechaFin: {
+    fecha_fin: {
       type: DataTypes.DATEONLY,
       allowNull: true
+    },
+    rol_id: {
+      type: DataTypes.STRING,
+      allowNull: false
     }
   }, {
-    tableName: 'usuarios'
+    tableName: 'usuarios',
+    timestamps: false
   });
 };

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { Usuario } from 'src/app/classes/usuario';
+import axios from 'axios';
 
 @Component({
   selector: 'app-register',
@@ -19,7 +20,15 @@ export class RegisterComponent implements OnInit {
   }
 
   registrar() {
-
+    axios.post('http://localhost:8000/api/register', {
+      usuario: this.usuario.nombre,
+      pass: this.usuario.clave,
+      rol: 'SUP'
+    }).then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.log(err)
+    });
   }
 
   ingresar() {
@@ -31,7 +40,7 @@ export class RegisterComponent implements OnInit {
           this.error = true;
           this.enviado = false;
         } else {
-          this.authServer.nuevoLogueado(u);
+          this.authServer.logged(u);
           this.enviado = false;
           if (this.authServer.redirectUrl) {
             this.router.navigate([this.authServer.redirectUrl]);
