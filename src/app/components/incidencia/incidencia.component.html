@@ -4,29 +4,39 @@
     <h2>Incidencia</h2>
     <div class="d-inline-flex form-group" style="width: 650px;">
       <label>Título:</label> &nbsp;
-      <input type="text" class="form-control" style="width: 100%;" maxlength="60" required>
+      <input type="text" class="form-control" style="width: 100%;" maxlength="60" required [(ngModel)]="incidencia.titulo">
     </div>
 
     <div class="d-flex flex-wrap form-group">
-      <label>Texto</label> &nbsp; &nbsp;
-      <textarea name="texto" id="texto" cols="30" rows="10" style="width: 600px;"></textarea>
+      <label>Texto:</label> &nbsp; &nbsp;
+      <textarea name="texto" id="texto" cols="30" rows="10" style="width: 600px;" [(ngModel)]="incidencia.desc"></textarea>
       <!-- lista de eventos con redirect -->
     </div>
 
     <div class="d-flex form-group">
-      <label>Importancia</label> &nbsp;
-      <select name="" id="">
-        <option value="">a</option>
+      <label>Importancia:</label> &nbsp;
+      <select name="incidenciaImp" ngDefaultControl id="iImp" [(ngModel)]="inImp">
+        <option name="incidenciaImp2" ngDefaultControl *ngFor="let importancia of incidencia.importancia" [ngValue]="importancia" >{{ importancia }}</option>
       </select>
       &nbsp; &nbsp;
-      <label>Estado</label> &nbsp;
-      <select name="" id="">
-        <option value="">b</option>
+      <!-- <label>Estado:</label> &nbsp;
+      <select name="incidenciaEst" ngDefaultControl id="iEst" >
+        <option name="incidenciaEst2" ngDefaultControl *ngFor="let estado of incidencia.estado" [ngValue]="estado"> {{ estado }}</option>
+      </select> -->
+      &nbsp; &nbsp;
+      <label>Usuario a asignar:</label> &nbsp;
+      <select name="incidenciaUser" ngDefaultControl id="iUser" [(ngModel)]="inUser">
+        <option name="incidenciaUser2" ngDefaultControl *ngFor="let user of users" [ngValue]="user"> {{ user }}</option>
+      </select>
+      &nbsp; &nbsp;
+      <label>Medio a notificar:</label> &nbsp;
+      <select name="incidenciaNotif" ngDefaultControl id="iNotif" [(ngModel)]="inNotif">
+        <option name="incidenciaNotif2" ngDefaultControl *ngFor="let medio of notificacion" [ngValue]="medio"> {{ medio }}</option>
       </select>
     </div>
   </div>
-  <div class="d-inline-flex float-left">
-    <button class="btn btn-success">Generar Evento</button> &nbsp;
-    <button class="btn btn-primary">Editar Evento</button>
+  <div class="d-inline-flex justify-content-around" style="width: 500px;">
+    <button class="btn btn-success float-left" (click)="generarIncidencia()">Generar Incidencia</button> &nbsp;
+    <button class="btn btn-primary float-right">Editar Incidencia</button>
   </div>
 </div>

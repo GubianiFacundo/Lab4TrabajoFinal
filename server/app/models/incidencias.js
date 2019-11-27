@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       primaryKey: true
     },
     titulo: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(60),
       allowNull: false
     },
     descripcion: {
@@ -28,8 +28,8 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false,
       defaultValue: 'GENERADA'
     },
-    id_user: {
-      type: DataTypes.INTEGER,
+    nombre_user: {
+      type: DataTypes.STRING,
       allowNull: false
     }
   }, {

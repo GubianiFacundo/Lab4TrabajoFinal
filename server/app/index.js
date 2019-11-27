@@ -53,7 +53,13 @@ app.use(function (req, res, next) {
 // });
 
 
+
 let router = require('./routes/router')(cfg);
+
+router.get('/', (req, res) => {
+  res.status(200).send('Yay!!!')
+});
+
 app.use('/api', router);
 app.use(function (req, res, next) {
 	var err = new Error('Not Found');
@@ -62,7 +68,7 @@ app.use(function (req, res, next) {
 });
 
 let server = http.createServer(app);
-server.setTimeout(15 * 60 * 1000); // (15min)
+server.setTimeout(60 * 1000); // (15min)
 server.listen(cfg.puerto, () => {
 	console.log(`Server corriendo en el puerto ${cfg.puerto}, I'm up bro yay!!! ;)`);
 }).on('error', (e) => {

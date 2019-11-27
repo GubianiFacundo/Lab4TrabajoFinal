@@ -5,5 +5,6 @@ module.exports = function(app) {
 	app.post('/register', usuario.registrar);
 	// app.delete('/usuario/delete/:id', usuario.borrar);
 	app.put('/usuario/:id', usuario.modificar);
-	app.get('/usuarios', usuario.listaUsuario);
+  app.get('/usuarios', usuario.listaUsuario);
+  app.get('/usuariosAsignar', usuario.listaUsuarioAsignar);
 };

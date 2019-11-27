@@ -3,6 +3,7 @@ var router = express.Router();
 
 module.exports = function (cfg) {
   require('./usuarios')(router);
+  require('./incidencias')(router);
   router.get('/', (req, res) => {
     res.status(200).send('Yay!!!')
   });

@@ -1,21 +1,9 @@
 const db = require('../config/db.config');
 const cfg = require('../config/config.json');
+const formDate = require ('./formDate');
 const op = db.Sequelize.Op;
 const usuario = db.usuarios;
 
-function formatDate(date) {
-  var d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
-
-  if (month.length < 2) 
-      month = '0' + month;
-  if (day.length < 2) 
-      day = '0' + day;
-
-  return [year, month, day].join('-');
-}
 
 exports.init = (req, res) => {
 	usuario.create({
@@ -67,15 +55,15 @@ exports.registrar = (req, res) => {
 			nombre: req.body.usuario,
 			pass: req.body.pass,
       rol_id: req.body.rol,
-      fecha_ini: formatDate(new Date),
+      fecha_ini: formDate.format(new Date),
       fecha_fin: null
 		}).then(() => {
-			res.status(201).send(true);
+			res.status(201).send('Usuario generado correctamente !!!');
 		}).catch(err => {
 			res.status(409).send(err);
 		});
 	} else {
-		res.status(401).send('Faltan variables');
+		res.status(401).send('Faltan variables !!!');
 	}
 };
 // exports.borrar = (req, res) => {
@@ -101,8 +89,28 @@ exports.modificar = (req, res) => {
 };
 exports.listaUsuario = (req, res) => {
 	db.usuarios.findAll({
-		attributes: ['usu_id', 'usuario', 'pass', 'email', 'user_id', 'rol_id'],
+		attributes: ['id', 'nombre', 'fecha_ini', 'fecha_fin', 'rol_id'],
 	}).then(result => {
 		res.status(200).json(result);
-	});
+	}).catch(err => {
+    res.status(401).send(err)
+  });
 };
+exports.listaUsuarioAsignar = (req, res) => {
+	db.usuarios.findAll({
+    attributes: ['id', 'nombre', 'fecha_ini', 'fecha_fin', 'rol_id'],
+    where: {
+      fecha_fin: {
+        [op.or]: {
+          [op.lt]: formDate.format(new Date),
+          [op.is]: null,
+        },
+      },
+    },
+	}).then(result => {
+		res.status(200).json(result);
+	}).catch(err => {
+    res.status(401).send(err)
+  });
+};
+

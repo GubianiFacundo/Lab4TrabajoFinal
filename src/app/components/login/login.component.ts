@@ -10,7 +10,7 @@ import { Usuario } from 'src/app/classes/usuario';
 })
 export class LoginComponent implements OnInit {
 
-  usuario = { nombre: '', pass: '' };
+  usuario = { nombre: 'admin', pass: 'admin' };
   error = false;
   enviado = false;
 
@@ -30,11 +30,12 @@ export class LoginComponent implements OnInit {
         } else {
           this.authServer.logged(u);
           this.enviado = false;
-          if (this.authServer.redirectUrl) {
+          if (this.authServer.redirectUrl) {       
             sessionStorage.setItem('isLogged', 'true');
             this.router.navigate([this.authServer.redirectUrl]);
           } else {
-            this.router.navigate(['/incidencia']);
+            sessionStorage.setItem('user', this.usuario.nombre);
+            this.router.navigate(['/incidencias']);
           }
         }
       });

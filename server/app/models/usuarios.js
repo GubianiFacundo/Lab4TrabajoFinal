@@ -10,7 +10,8 @@ module.exports = function(sequelize, DataTypes) {
     },
     nombre: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     pass: {
       type: DataTypes.STRING,
@@ -25,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: true
     },
     rol_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(3),
       allowNull: false
     }
   }, {

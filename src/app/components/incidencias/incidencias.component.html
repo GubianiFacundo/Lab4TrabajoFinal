@@ -1,8 +1,33 @@
-<p>incidencias works!</p>
+<div class="container-fluid">
+  <br>
+  <div class="input-group-prepend" style="max-width: 700px; margin:0 auto;">
+    <label class="float-right" style="margin-inline-end: 120px">Usuario:</label>
+    <label class="float-right" style="margin-inline-end: 110px">Fecha Inicio:</label>
+    <label class="float-right" style="margin-inline-end: 10px">Fecha Fin:</label>
+  </div>
 
-<dx-data-grid
-    id="gridContainer"
-    [dataSource]="customers"
-    [columns]="['CompanyName', 'City', 'State', 'Phone', 'Fax']"
-    [showBorders]="true">
-</dx-data-grid>
+  <!-- Search -->
+  <form class="input-group-prepend" style="max-width: 700px; margin:0 auto;">
+    <select name="incidenciasUser" ngDefaultControl id="busqueda1"
+      style="width: 600px; border-start-end-radius: 10%; height: 35px;" [(ngModel)]="inUser"
+      [ngModelOptions]="{standalone: true}">
+      <option name="incidenciasUser2" ngDefaultControl *ngFor="let user of users" [ngValue]="user"> {{ user }}</option>
+    </select>&nbsp;
+    <input type="date" class="form-control" id="busqueda2" [ngModel]="fechaIni | date:'yyyy-MM-dd'" 
+    (ngModelChange)="fechaIni = $event" name="inputFechaIni"> &nbsp;
+    <input type="date" class="form-control" id="busqueda3" [ngModel]="fechaFin | date:'yyyy-MM-dd'" 
+    (ngModelChange)="fechaFin = $event" name="inputFechaFin">
+    <button style="margin-left:5px; width: 100%" class="btn btn-info" (click)="getIncidencias()"><i
+        class="fa fa-search" name="buttonBuscar"></i> Buscar</button>
+  </form>
+  <br>
+
+  <dx-data-grid id="gridContainer" ref="grilla" [dataSource]="customers" [showBorders]="true" [remoteOperations]="true"
+    [allowColumnReordering]="true" [allowColumnResizing]="true" [columnAutoWidth]="true" [columnMinWidth]="10"
+    [height]="600" [selection]="selection">
+    <!-- [columns]="['CompanyName', 'City', 'State', 'Phone', 'Fax']" -->
+    <dxo-load-panel [enabled]="false"></dxo-load-panel>
+    <dxo-scrolling mode="infinite"></dxo-scrolling>
+    <dxo-sorting mode="none"></dxo-sorting>
+  </dx-data-grid>
+</div>
