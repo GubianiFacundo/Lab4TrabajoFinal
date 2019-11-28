@@ -11,7 +11,7 @@ import axios from 'axios';
 export class IncidenciaComponent implements OnInit {
 
   incidencia = new Incidencia();
-  // notificacion = new Notificacion(); // porcua no quieres andar riquiAngular weh :¿?
+  
   notificacion = ['MAIL', 'SMS', 'TELEFONO'];
   inImp: String;
   inEst: '';
@@ -43,7 +43,7 @@ export class IncidenciaComponent implements OnInit {
     }).then(async res => {
       await axios.put('http://localhost:8000/api/modificarIncidencia/' + res.data.id, {
         titulo: self.incidencia.titulo,
-        descripcion: self.incidencia.desc,
+        desc: self.incidencia.desc,
         importancia: self.inImp,
         estado: 'NOTIFICADA',
         nombre_user: self.inUser,

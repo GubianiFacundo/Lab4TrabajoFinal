@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <br>
   <div class="center">
-    <h2>Incidencia</h2>
+    <h2>Editar Incidencia</h2>
     <div class="d-inline-flex form-group" style="width: 650px;">
       <label>Título:</label> &nbsp;
       <input type="text" class="form-control" style="width: 100%;" maxlength="60" required [(ngModel)]="incidencia.titulo">
@@ -18,22 +18,18 @@
         <option name="incidenciaImp2" ngDefaultControl *ngFor="let importancia of incidencia.importancia" [ngValue]="importancia" >{{ importancia }}</option>
       </select>
       &nbsp; &nbsp;
-      <!-- <label>Estado:</label> &nbsp;
-      <select name="incidenciaEst" ngDefaultControl id="iEst" >
-        <option name="incidenciaEst2" ngDefaultControl *ngFor="let estado of incidencia.estado" [ngValue]="estado"> {{ estado }}</option>
-      </select> -->
+      <label>Acción:</label> &nbsp;
+      <select name="incidenciaAcc" ngDefaultControl id="iAcc" [(ngModel)]="inAcc">
+        <option name="incidenciaAcc2" ngDefaultControl *ngFor="let accion of acciones" [ngValue]="accion"> {{ accion }}</option>
+      </select>
+      &nbsp; &nbsp;
       <label>Usuario a asignar:</label> &nbsp;
       <select name="incidenciaUser" ngDefaultControl id="iUser" [(ngModel)]="inUser">
         <option name="incidenciaUser2" ngDefaultControl *ngFor="let user of users" [ngValue]="user"> {{ user }}</option>
       </select>
-      &nbsp; &nbsp;
-      <label>Medio a notificar:</label> &nbsp;
-      <select name="incidenciaNotif" ngDefaultControl id="iNotif" [(ngModel)]="inNotif">
-        <option name="incidenciaNotif2" ngDefaultControl *ngFor="let medio of notificacion" [ngValue]="medio"> {{ medio }}</option>
-      </select>
     </div>
   </div>
   <div class="d-inline-flex justify-content-around" style="width: 500px;">
-    <button class="btn btn-success float-left" (click)="generarIncidencia()">Generar Incidencia</button>
+    <button class="btn btn-success float-left" (click)="editarIncidencia()">Editar Incidencia</button>
   </div>
 </div>

@@ -1,5 +1,5 @@
 const db = require('../config/db.config');
-const cfg = require('../config/config.json');
+const cfg = require('../config/config');
 const formDate = require('./formDate');
 const notificaciones = require('./notificaciones.controller')
 const acciones = require('./acciones.controller')

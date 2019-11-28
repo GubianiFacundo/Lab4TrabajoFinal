@@ -17,22 +17,19 @@ export class NavbarComponent implements OnInit, OnDestroy {
   constructor(
     public authSrv: AuthService,
     private router: Router
-    ) {
-      // Nos suscribimos al authorization service y entonces vemos quién está todo logueado...
-      this.imUser = this.authSrv.quien.subscribe((user: Usuario) => this.usuario = user);
-
+  ) {
+    this.imUser = this.authSrv.quien.subscribe((user: Usuario) => this.usuario = user);
   }
 
   ngOnInit() {
-    console.log(this.usuario)
-    // F5 y te me vas pal login
-    if (this.usuario.rol === 'NON') {
-      this.router.navigate(['/']);
-    }
+
   }
 
   salir() {
-    // this.authSrv.logout();
+    this.authSrv.logout();
+    // sessionStorage.setItem('isLogged', 'false');
+    // this.logged = sessionStorage.getItem('isLogged');
+    // sessionStorage.clear();
     this.usuario = new Usuario();
     this.router.navigate(['/']);
   }

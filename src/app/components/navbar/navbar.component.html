@@ -1,43 +1,16 @@
-<div class="fixed-top" [hidden]="logged"><p> No estás logueado capo !!!</p></div>
-<div class="fixed-top">
-  <nav *ngIf="usuario.rol !== 'NON'" class="navbar fixed-top navbar-light" style="background-color: lightsteelblue;">
+<div class="fixed-top" [hidden]="logged">
+  <p> No estás logueado !!!</p>
+</div>
+<div class="fixed-top" *ngIf="logged">
+  <nav class="navbar fixed-top navbar-light" style="background-color: lightsteelblue;">
     <form class="form-inline">
       <a class="navbar-brand" href="#"><i class="glyphicon glyphicon-user"></i>CRM:</a>
-      <button routerLink="/incidencias" class="btn btn-sm btn-outline-primary" type="button">Tabla de Incidencias</button> &nbsp;
-      <button routerLink="/incidencia" class="btn btn-sm btn-outline-primary" type="button">Administrar Incidencia</button> &nbsp;
-      
+      <button routerLink="/incidencias" class="btn btn-sm btn-outline-primary" type="button">Tabla de
+        Incidencias</button> &nbsp;
+      <button routerLink="/incidencia" class="btn btn-sm btn-outline-primary" type="button">Generar
+        Incidencia</button> &nbsp;
+      <button routerLink="/cuentas" class="btn btn-sm btn-outline-primary" type="button">Administrar Cuentas</button> &nbsp;
       <button (click)="salir()" class="btn btn-sm btn-outline-primary float-right" type="button">Salir</button>
-     </form>
+    </form>
   </nav>
-
-  <!-- <nav *ngIf="usuario.rol === 'C'" class="navbar fixed-top navbar-light" style="background-color: lightsteelblue;">
-    <form class="form-inline">
-      <a class="navbar-brand" href="#"><i class="fa fa-shopping-cart"></i> ABM Stock: Compras</a>
-      <button routerLink="/listarubros" class="btn btn-sm btn-outline-primary" type="button">Rubros</button>
-      <button routerLink="/listaarticulos" class="btn btn-sm btn-outline-primary" type="button">Articulos</button>
-      <button routerLink="/listaproveedores" class="btn btn-sm btn-outline-primary" type="button">Proveedores</button>
-      <button routerLink="/compras" class="btn btn-sm btn-outline-primary" type="button">Compras</button>
-      <button routerLink="/listafacturacompra" class="btn btn-sm btn-outline-primary" type="button">Lista Compras</button>
-      <button (click)="salir()" class="btn btn-sm btn-outline-primary" type="button">Salir</button>
-     </form>
-    <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
-    <button class="btn btn-sm btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-    </form> 
-  </nav> -->
-
-  <!-- <nav *ngIf="usuario.rol === 'V'" class="navbar fixed-top navbar-light" style="background-color: lightsteelblue;">
-    <form class="form-inline">
-      <a class="navbar-brand" href="#"><i class="fa fa-shopping-cart"></i> ABM Stock: Ventas</a>
-      <button routerLink="/listaarticulos" class="btn btn-sm btn-outline-primary" type="button">Articulos</button>
-      <button routerLink="/listaclientes" class="btn btn-sm btn-outline-primary" type="button">Clientes</button>
-      <button routerLink="/ventas" class="btn btn-sm btn-outline-primary" type="button">Ventas</button>
-      <button routerLink="/listafacturaventa" class="btn btn-sm btn-outline-primary" type="button">Lista Ventas</button>
-      <button (click)="salir()" class="btn btn-sm btn-outline-primary" type="button">Salir</button>
-     </form>
-     <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar">
-    <button class="btn btn-sm btn-outline-success my-2 my-sm-0" type="submit"><i class="fa fa-search"></i></button>
-    </form> 
-  </nav> -->
 </div>

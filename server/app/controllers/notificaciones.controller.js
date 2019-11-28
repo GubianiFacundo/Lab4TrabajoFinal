@@ -1,5 +1,4 @@
 const db = require('../config/db.config');
-const cfg = require('../config/config.json');
 const formDate = require('./formDate');
 const op = db.Sequelize.Op;
 

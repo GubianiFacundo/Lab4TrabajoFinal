@@ -1,0 +1,26 @@
+<div class="container-fluid">
+  <br>
+  <div class="d-flex input-group-prepend justify-content-around" style="width: 500px;">
+    <button class="btn btn-sm btn-outline-success" type="button" (click)="getCuentas('activas')">Cuentas Activas</button> &nbsp;
+    <button class="btn btn-sm btn-outline-danger" type="button" (click)="getCuentas('inactivas')">Cuentas Inactivas</button> &nbsp;
+    <button class="btn btn-sm btn-outline-primary" type="button" (click)="getCuentas('todas')">Todas las Cuentas</button> &nbsp;
+  </div>
+  <br>
+
+  <dx-data-grid id="gridContainer" ref="grilla" [dataSource]="customers" [showBorders]="true" [remoteOperations]="true"
+    [allowColumnReordering]="true" [allowColumnResizing]="true" [columnAutoWidth]="true" [columnMinWidth]="10"
+    [height]="600" [selection]="selection">
+    <dxi-column dataField="id" caption="Id"></dxi-column>
+    <dxi-column dataField="nombre" caption="Nombre"></dxi-column>
+    <dxi-column dataField="fecha_ini" caption="Fecha Inicio"></dxi-column>
+    <dxi-column dataField="fecha_fin" caption="Fecha Fin"></dxi-column>
+    <dxi-column dataField="rol_id" caption="Rol"></dxi-column>
+    <dxi-column type="buttons" caption="Tabla Incidencias">
+      <dxi-button icon='export' text='Ir a Incidencias' hint='Ir a Incidencia' [onClick]="goToIncidenciasCuenta">
+      </dxi-button>
+    </dxi-column>
+    <dxo-load-panel [enabled]="false"></dxo-load-panel>
+    <dxo-scrolling mode="infinite"></dxo-scrolling>
+    <dxo-sorting mode="none"></dxo-sorting>
+  </dx-data-grid>
+</div>

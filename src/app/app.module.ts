@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { DxDataGridModule } from 'devextreme-angular';
+import { DxButtonModule } from 'devextreme-angular';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +15,8 @@ import { IncidenciasComponent } from './components/incidencias/incidencias.compo
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { IncidenciaComponent } from './components/incidencia/incidencia.component';
 import { RegisterComponent } from './components/register/register.component';
+import { IncidenciaEditComponent } from './components/incidencia-edit/incidencia-edit.component';
+import { CuentasComponent } from './components/cuentas/cuentas.component';
 
 
 @NgModule({
@@ -23,7 +26,9 @@ import { RegisterComponent } from './components/register/register.component';
     IncidenciasComponent,
     NavbarComponent,
     IncidenciaComponent,
-    RegisterComponent
+    RegisterComponent,
+    IncidenciaEditComponent,
+    CuentasComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +37,7 @@ import { RegisterComponent } from './components/register/register.component';
     ReactiveFormsModule,
     HttpClientModule,
     DxDataGridModule,
+    DxButtonModule,
     AngularFontAwesomeModule
   ],
   providers: [AuthService],

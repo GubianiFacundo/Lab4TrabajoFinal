@@ -13,19 +13,29 @@
       [ngModelOptions]="{standalone: true}">
       <option name="incidenciasUser2" ngDefaultControl *ngFor="let user of users" [ngValue]="user"> {{ user }}</option>
     </select>&nbsp;
-    <input type="date" class="form-control" id="busqueda2" [ngModel]="fechaIni | date:'yyyy-MM-dd'" 
-    (ngModelChange)="fechaIni = $event" name="inputFechaIni"> &nbsp;
-    <input type="date" class="form-control" id="busqueda3" [ngModel]="fechaFin | date:'yyyy-MM-dd'" 
-    (ngModelChange)="fechaFin = $event" name="inputFechaFin">
-    <button style="margin-left:5px; width: 100%" class="btn btn-info" (click)="getIncidencias()"><i
-        class="fa fa-search" name="buttonBuscar"></i> Buscar</button>
+    <input type="date" class="form-control" id="busqueda2" [ngModel]="fechaIni | date:'yyyy-MM-dd'"
+      (ngModelChange)="fechaIni = $event" name="inputFechaIni"> &nbsp;
+    <input type="date" class="form-control" id="busqueda3" [ngModel]="fechaFin | date:'yyyy-MM-dd'"
+      (ngModelChange)="fechaFin = $event" name="inputFechaFin">
+    <button style="margin-left:5px; width: 100%" class="btn btn-info" (click)="getIncidencias()"><i class="fa fa-search"
+        name="buttonBuscar"></i> Buscar</button>
   </form>
   <br>
 
   <dx-data-grid id="gridContainer" ref="grilla" [dataSource]="customers" [showBorders]="true" [remoteOperations]="true"
     [allowColumnReordering]="true" [allowColumnResizing]="true" [columnAutoWidth]="true" [columnMinWidth]="10"
     [height]="600" [selection]="selection">
-    <!-- [columns]="['CompanyName', 'City', 'State', 'Phone', 'Fax']" -->
+    <dxi-column dataField="id" caption="Id"></dxi-column>
+    <dxi-column dataField="titulo" caption="Título"></dxi-column>
+    <dxi-column dataField="descripcion" caption="Descripción"></dxi-column>
+    <dxi-column dataField="fecha" caption="Fecha"></dxi-column>
+    <dxi-column dataField="importancia" caption="Importancia"></dxi-column>
+    <dxi-column dataField="estado" caption="Estado"></dxi-column>
+    <dxi-column dataField="nombre_user" caption="Usuario Asignado"></dxi-column>
+    <dxi-column type="buttons" caption="Editar Incidencia">
+      <dxi-button icon='edit' text='Editar Incidencia' hint='Editar Incidencia' [onClick]="click">
+      </dxi-button>
+    </dxi-column>
     <dxo-load-panel [enabled]="false"></dxo-load-panel>
     <dxo-scrolling mode="infinite"></dxo-scrolling>
     <dxo-sorting mode="none"></dxo-sorting>

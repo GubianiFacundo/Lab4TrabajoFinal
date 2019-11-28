@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize');
-var cfg = require('./config.json');
+const config = require('./config');
 
-var sequelize = new Sequelize(cfg.db.DB, cfg.db.USER, cfg.db.PASS, {
-	dialect: cfg.dialect,
-	host: cfg.db.HOST,
+const sequelize = new Sequelize(config.db.DB, config.db.USER, config.db.PASS, {
+	dialect: config.dialect,
+	host: config.db.HOST,
 	dialectOptions: {
 		useUTC: false, // for reading from database
 	},

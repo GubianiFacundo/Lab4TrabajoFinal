@@ -1,5 +1,5 @@
 const db = require('../config/db.config');
-const cfg = require('../config/config.json');
+const config = require('../config/config');
 const formDate = require('./formDate');
 const op = db.Sequelize.Op;
 
@@ -19,5 +19,17 @@ exports.generarAccion = async function (idIncidencia, tipo_accion) {
       ok: false,
       error: err
     };
+  })
+}
+
+exports.generarAccionEsc = async function (req, res) {
+  db.acciones.create({
+    id_incidencia: req.body.id_incidencia,
+    tipo_accion: req.body.tipo_accion,
+    fecha: formDate.format(new Date),
+  }).then(() => {
+    res.status(200).send('Acción generada correctamente !!!');
+  }).catch(err => {
+    res.status(409).send('Error: ', err)
   })
 }

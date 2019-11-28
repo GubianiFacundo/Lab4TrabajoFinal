@@ -31,13 +31,21 @@ export class AuthService {
 
   }
 
+  nuevoLogueado(u: Usuario) {
+    // recibo el usuario del login
+    this.user = u;
+    // y lo avisamos a los componentes suscriptos atraves del BehaviorSubject
+    this.logueado.next(this.user);
+
+  }
+
   // Observable devuelve usuario válido (no olvidar hacer la suscripcion desde la login page)
   login(usuario: String, pass: String) {
     const body = { usuario: usuario, pass: pass };
     return this.client.post('http://localhost:8000/api/login', body, httpOptions);
   }
 
-  // re facil creamos un nuevo usuario (rol N) y lo mandamos a nuevologueado
-  logout() { this.logged(new Usuario()); }
+ // re facil creamos un nuevo usuario (rol N) y lo mandamos a nuevologueado
+ logout() { this.nuevoLogueado(new Usuario()); }
 
 }

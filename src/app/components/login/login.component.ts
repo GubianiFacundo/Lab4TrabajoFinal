@@ -29,11 +29,12 @@ export class LoginComponent implements OnInit {
           this.enviado = false;
         } else {
           this.authServer.logged(u);
+          this.authServer.nuevoLogueado(u);
           this.enviado = false;
           if (this.authServer.redirectUrl) {       
-            sessionStorage.setItem('isLogged', 'true');
             this.router.navigate([this.authServer.redirectUrl]);
           } else {
+            sessionStorage.setItem('isLogged', 'true');
             sessionStorage.setItem('user', this.usuario.nombre);
             this.router.navigate(['/incidencias']);
           }
